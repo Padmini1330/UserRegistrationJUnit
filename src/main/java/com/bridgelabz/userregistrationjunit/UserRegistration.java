@@ -29,7 +29,11 @@ public class UserRegistration
 		return mobileNumber.matches(mobileNumberRegex);
 	}
 	
-	
+	public boolean validatePassword(String password) {
+
+		String passwordRegex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@!#$%&?\"]).{8,}$"; 
+		return password.matches(passwordRegex);
+	}
 }
 
 
