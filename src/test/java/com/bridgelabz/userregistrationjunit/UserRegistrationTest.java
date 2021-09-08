@@ -88,5 +88,32 @@ public class UserRegistrationTest
 		
 	}
 	
-
+	@Test
+	public void givenMobileNumber_WhenProper_ShouldReturnTrue() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isValid = userRegistration.validateMobileNumber("91 9485736453");
+		Assert.assertTrue(isValid);
+	}
+	
+	@Test
+	public void givenMobileNumber_WhenNoSpace_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validateMobileNumber("918765432198");
+		Assert.assertFalse(isInvalid);
+	}
+	
+	@Test
+	public void givenMobileNumber_WhenNumberLessThanTenDigits_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validateMobileNumber("85 76");
+		Assert.assertFalse(isInvalid);
+	}
+	
+	
 }
