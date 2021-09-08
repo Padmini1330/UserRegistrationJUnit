@@ -115,5 +115,49 @@ public class UserRegistrationTest
 		Assert.assertFalse(isInvalid);
 	}
 	
+	@Test
+	public void givenPassword_WhenProper_ShouldReturnTrue() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isValid = userRegistration.validatePassword("padminI$111");
+		Assert.assertTrue(isValid);
+	}
 	
+	@Test
+	public void givenPassword_WhenLessThanEightCharcters_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validatePassword("abcde@1");
+		Assert.assertFalse(isInvalid);
+	}
+	
+	@Test
+	public void givenPassword_WhenNoUpperCaseCharacter_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validatePassword("abcdefghij");
+		Assert.assertFalse(isInvalid);
+	}
+	
+	@Test
+	public void givenPassword_WhenNoNumericalNumber_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validatePassword("passWord@w");
+		Assert.assertFalse(isInvalid);
+	}
+	
+	@Test
+	public void givenPassword_WhenMoreThanOneSpecialCharacter_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validatePassword("abcd#$%5thg");
+		Assert.assertFalse(isInvalid);
+	}
+
 }
