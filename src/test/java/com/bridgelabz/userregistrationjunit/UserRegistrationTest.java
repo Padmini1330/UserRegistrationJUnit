@@ -68,5 +68,25 @@ public class UserRegistrationTest
 		
 	}
 	
+	@Test
+	public void givenEmailAddress_WhenProper_ShouldReturnTrue() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isValid = userRegistration.validateEmail("abc.xyz@gmail.com");
+		Assert.assertTrue(isValid);
+		
+	}
+	
+	@Test
+	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validateEmail("abc@.gmail.");
+		Assert.assertFalse(isInvalid);
+		
+	}
+	
 
 }
