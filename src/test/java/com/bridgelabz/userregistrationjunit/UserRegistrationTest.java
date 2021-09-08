@@ -147,7 +147,7 @@ public class UserRegistrationTest
 	{
 		
 		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validatePassword("passWord@w");
+		boolean isInvalid = userRegistration.validatePassword("pass%word@w");
 		Assert.assertFalse(isInvalid);
 	}
 	
