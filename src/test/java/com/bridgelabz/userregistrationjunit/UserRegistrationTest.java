@@ -39,6 +39,47 @@ public class UserRegistrationTest
 	}
 	
 	@Test
+	public void givenFirstName_WhenNull_ShouldReturnFalse() 
+	{
+		try 
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateFirstName(null);
+			Assert.assertFalse(isValid);
+		}
+		catch(NullPointerException e) 
+		{
+			System.out.println("Enter proper FirstName");
+		}
+		
+	}
+	
+	@Test
+	public void givenFirstName_WhenStartsWithSpecialCharacter_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isValid = userRegistration.validateFirstName("%Padmini");
+		Assert.assertFalse(isValid);
+		
+	}
+	
+	@Test
+	public void givenFirstName_WhenContainsBlankspace_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isValid = userRegistration.validateFirstName("Padmin i");
+		Assert.assertFalse(isValid);
+		
+	}
+	
+	
+	
+	
+	
+	
+	@Test
 	public void givenLastName_WhenProper_ShouldReturnTrue() 
 	{
 		
@@ -69,6 +110,48 @@ public class UserRegistrationTest
 	}
 	
 	@Test
+	public void givenLastName_WhenNull_ShouldReturnFalse() 
+	{
+		
+		try 
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateLastName(null);
+			Assert.assertFalse(isValid);
+		}
+		catch(NullPointerException e) 
+		{
+			System.out.println("Enter proper LastName");
+		}
+		
+	}
+	
+	@Test
+	public void givenLastName_WhenStartsWithSpecialCharacter_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isValid = userRegistration.validateLastName("%Padmini");
+		Assert.assertFalse(isValid);
+		
+	}
+	
+	@Test
+	public void givenLastName_WhenContainsBlankspace_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isValid = userRegistration.validateLastName("Padmin i");
+		Assert.assertFalse(isValid);
+		
+	}
+	
+	
+	
+	
+	
+	
+	@Test
 	public void givenEmailAddress_WhenProper_ShouldReturnTrue() 
 	{
 		
@@ -89,6 +172,55 @@ public class UserRegistrationTest
 	}
 	
 	@Test
+	public void givenEmailAddress_WhenNull_ShouldReturnFalse() 
+	{
+		try 
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateEmail(null);
+			Assert.assertFalse(isValid);
+		}
+		catch(NullPointerException e) 
+		{
+			System.out.println("Enter proper Email");
+		}
+		
+	}
+	
+	@Test
+	public void givenEmailAddress_WhenStartsWithSpecialCharacter_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validateEmail("$abc@.gmail.");
+		Assert.assertFalse(isInvalid);
+		
+	}
+	
+	@Test
+	public void givenEmailAddress_WhenDoesNotContainAtTheRateCharacter_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validateEmail("abc.gmail.");
+		Assert.assertFalse(isInvalid);
+	}	
+	
+	@Test
+	public void givenEmailAddress_WhenEndsWithSpecialCharacter_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validateEmail("abc.gmail.com$");
+		Assert.assertFalse(isInvalid);
+	}
+	
+	
+	
+	
+	
+	
+	@Test
 	public void givenMobileNumber_WhenProper_ShouldReturnTrue() 
 	{
 		
@@ -107,6 +239,22 @@ public class UserRegistrationTest
 	}
 	
 	@Test
+	public void givenMobileNumber_WhenNull_ShouldReturnFalse() 
+	{
+		
+		try 
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateMobileNumber(null);
+			Assert.assertFalse(isValid);
+		}
+		catch(NullPointerException e) 
+		{
+			System.out.println("Enter proper mobile number");
+		}
+	}
+	
+	@Test
 	public void givenMobileNumber_WhenNumberLessThanTenDigits_ShouldReturnFalse() 
 	{
 		
@@ -114,6 +262,29 @@ public class UserRegistrationTest
 		boolean isInvalid = userRegistration.validateMobileNumber("85 76");
 		Assert.assertFalse(isInvalid);
 	}
+	
+	@Test
+	public void givenMobileNumber_WhenContainsAlphabets_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validateMobileNumber("85 abc76defg");
+		Assert.assertFalse(isInvalid);
+	}
+	
+	@Test
+	public void givenMobileNumber_WhenContainsMoreThanTenDigits_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validateMobileNumber("91 98765432198765");
+		Assert.assertFalse(isInvalid);
+	}
+	
+	
+	
+	
+	
 	
 	@Test
 	public void givenPassword_WhenProper_ShouldReturnTrue() 
@@ -151,6 +322,30 @@ public class UserRegistrationTest
 		Assert.assertFalse(isInvalid);
 	}
 	
+	@Test
+	public void givenPassword_WhenNull_ShouldReturnFalse() 
+	{
+		
+		try 
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validatePassword(null);
+			Assert.assertFalse(isValid);
+		}
+		catch(NullPointerException e) 
+		{
+			System.out.println("Enter proper Password");
+		}
+	}
+	
+	@Test
+	public void givenPassword_WhenContainsNoSpecialCharacter_ShouldReturnFalse() 
+	{
+		
+		UserRegistration userRegistration = new UserRegistration();
+		boolean isInvalid = userRegistration.validatePassword("abcd5thg");
+		Assert.assertFalse(isInvalid);
+	}
 	@Test
 	public void givenPassword_WhenMoreThanOneSpecialCharacter_ShouldReturnFalse() 
 	{
