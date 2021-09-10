@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.bridgelabz.userregistrationjunit.EmailException.EmailExceptionType;
+
 @RunWith(Parameterized.class)
 public class UserRegistrationParameterizedTest 
 {
@@ -31,10 +33,17 @@ public class UserRegistrationParameterizedTest
 	}
 
 	@Test
-	public void givenEmailAddress_ShouldReturnAsPerTheParameterizedResult() 
+	public void givenEmailAddress_ShouldReturnAsPerTheParameterizedResult() throws EmailException
 	{
-		boolean testResult = userRegistration.validateEmail(testEmail);
-		Assert.assertEquals(testResult, expectedResult);
+		boolean testResult;
+		try 
+		{
+			testResult = userRegistration.validateEmail(testEmail);
+		} catch (EmailException e) 
+		{
+			Assert.assertEquals(EmailExceptionType.EMAIL_INVALID, e.type);
+		}
+		
 	}
 
 	@Parameterized.Parameters
