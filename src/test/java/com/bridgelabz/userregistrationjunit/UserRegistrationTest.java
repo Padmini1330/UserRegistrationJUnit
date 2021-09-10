@@ -5,10 +5,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.bridgelabz.userregistrationjunit.FirstNameException.FirstNameExceptionType;
+import com.bridgelabz.userregistrationjunit.LastNameException.LastNameExceptionType;
 
 public class UserRegistrationTest 
 {
 
+	
 	@Test
 	public void givenFirstName_WhenProper_ShouldReturnTrue() throws FirstNameException  
 	{
@@ -131,37 +133,58 @@ public class UserRegistrationTest
 	
 	
 	@Test
-	public void givenLastName_WhenProper_ShouldReturnTrue() 
+	public void givenLastName_WhenProper_ShouldReturnTrue() throws LastNameException
 	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateLastName("Sharma");
+			Assert.assertTrue(isValid);
+		}
 		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isValid = userRegistration.validateLastName("Sharma");
-		Assert.assertTrue(isValid);
+		catch(LastNameException e)
+		{
+			Assert.assertEquals(LastNameExceptionType.LASTNAME_INVALID,e.type);
+		}
 		
 	}
 	
 	@Test
-	public void givenLastName_WhenFirstLetterIsSmall_ShouldReturnFalse() 
+	public void givenLastName_WhenFirstLetterIsSmall_ShouldReturnFalse() throws LastNameException
 	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateLastName("sharma");
+			Assert.assertFalse(isInvalid);
+		}
 		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateLastName("sharma");
-		Assert.assertFalse(isInvalid);
+		catch(LastNameException e)
+		{
+			Assert.assertEquals(LastNameExceptionType.LASTNAME_INVALID,e.type);
+		}
 		
 	}
 	
 	@Test
-	public void givenLastName_WhenLesserThanThreeCharacters_ShouldReturnFalse() 
+	public void givenLastName_WhenLesserThanThreeCharacters_ShouldReturnFalse() throws LastNameException
 	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateLastName("Sh");
+			Assert.assertFalse(isInvalid);
+		}
 		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateLastName("Sh");
-		Assert.assertFalse(isInvalid);
+		catch(LastNameException e)
+		{
+			Assert.assertEquals(LastNameExceptionType.LASTNAME_INVALID,e.type);
+		}
 		
 	}
 	
 	@Test
-	public void givenLastName_WhenNull_ShouldReturnFalse() 
+	public void givenLastName_WhenNull_ShouldReturnFalse() throws LastNameException
 	{
 		
 		try 
@@ -170,30 +193,60 @@ public class UserRegistrationTest
 			boolean isValid = userRegistration.validateLastName(null);
 			Assert.assertFalse(isValid);
 		}
-		catch(NullPointerException e) 
+		catch(LastNameException e)
 		{
-			System.out.println("Enter proper LastName");
+			Assert.assertEquals(LastNameExceptionType.LASTNAME_NULL,e.type);
 		}
 		
 	}
 	
 	@Test
-	public void givenLastName_WhenStartsWithSpecialCharacter_ShouldReturnFalse() 
+	public void givenLastName_WhenStartsWithSpecialCharacter_ShouldReturnFalse() throws LastNameException
 	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateLastName("%Padmini");
+			Assert.assertFalse(isValid);
+		}
 		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isValid = userRegistration.validateLastName("%Padmini");
-		Assert.assertFalse(isValid);
+		catch(LastNameException e)
+		{
+			Assert.assertEquals(LastNameExceptionType.LASTNAME_INVALID,e.type);
+		}
 		
 	}
 	
 	@Test
-	public void givenLastName_WhenContainsBlankspace_ShouldReturnFalse() 
+	public void givenLastName_WhenContainsBlankspace_ShouldReturnFalse() throws LastNameException
 	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateLastName("Padmin i");
+			Assert.assertFalse(isValid);
+		}
+		catch(LastNameException e)
+		{
+			Assert.assertEquals(LastNameExceptionType.LASTNAME_INVALID,e.type);
+		}
 		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isValid = userRegistration.validateLastName("Padmin i");
-		Assert.assertFalse(isValid);
+		
+	}
+	
+	@Test
+	public void givenLastName_WhenEmpty_ShouldReturnFalse() throws LastNameException
+	{
+		try 
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateLastName("");
+			Assert.assertFalse(isValid);
+		}
+		catch(LastNameException e)
+		{
+			Assert.assertEquals(LastNameExceptionType.LASTNAME_EMPTY,e.type);
+		}
 		
 	}
 	
