@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import com.bridgelabz.userregistrationjunit.FirstNameException.FirstNameExceptionType;
 import com.bridgelabz.userregistrationjunit.LastNameException.LastNameExceptionType;
+import com.bridgelabz.userregistrationjunit.MobileNumberException.MobileNumberExceptionType;
 
 public class UserRegistrationTest 
 {
@@ -144,7 +145,7 @@ public class UserRegistrationTest
 		
 		catch(LastNameException e)
 		{
-			Assert.assertEquals(LastNameExceptionType.LASTNAME_INVALID,e.type);
+			e.printStackTrace();
 		}
 		
 	}
@@ -325,25 +326,40 @@ public class UserRegistrationTest
 	
 	
 	@Test
-	public void givenMobileNumber_WhenProper_ShouldReturnTrue() 
+	public void givenMobileNumber_WhenProper_ShouldReturnTrue() throws MobileNumberException
 	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateMobileNumber("91 9485736453");
+			Assert.assertTrue(isValid);
+		}
 		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isValid = userRegistration.validateMobileNumber("91 9485736453");
-		Assert.assertTrue(isValid);
+		catch(MobileNumberException e)
+		{
+			e.printStackTrace();
+
+		}
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNoSpace_ShouldReturnFalse() 
+	public void givenMobileNumber_WhenNoSpace_ShouldReturnFalse() throws MobileNumberException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateMobileNumber("918765432198");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateMobileNumber("918765432198");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(MobileNumberException e)
+		{
+			Assert.assertEquals(MobileNumberExceptionType.MOBILENUMBER_INVALID,e.type);
+
+		}
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNull_ShouldReturnFalse() 
+	public void givenMobileNumber_WhenNull_ShouldReturnFalse() throws MobileNumberException
 	{
 		
 		try 
@@ -352,39 +368,75 @@ public class UserRegistrationTest
 			boolean isValid = userRegistration.validateMobileNumber(null);
 			Assert.assertFalse(isValid);
 		}
-		catch(NullPointerException e) 
+		catch(MobileNumberException e) 
 		{
-			System.out.println("Enter proper mobile number");
+			Assert.assertEquals(MobileNumberExceptionType.MOBILENUMBER_NULL,e.type);
 		}
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNumberLessThanTenDigits_ShouldReturnFalse() 
+	public void givenMobileNumber_WhenNumberLessThanTenDigits_ShouldReturnFalse() throws MobileNumberException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateMobileNumber("85 76");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateMobileNumber("85 76");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(MobileNumberException e)
+		{
+			Assert.assertEquals(MobileNumberExceptionType.MOBILENUMBER_INVALID,e.type);
+
+		}
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenContainsAlphabets_ShouldReturnFalse() 
+	public void givenMobileNumber_WhenContainsAlphabets_ShouldReturnFalse() throws MobileNumberException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateMobileNumber("85 abc76defg");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateMobileNumber("85 abc76defg");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(MobileNumberException e)
+		{
+			Assert.assertEquals(MobileNumberExceptionType.MOBILENUMBER_INVALID,e.type);
+
+		}
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenContainsMoreThanTenDigits_ShouldReturnFalse() 
+	public void givenMobileNumber_WhenContainsMoreThanTenDigits_ShouldReturnFalse() throws MobileNumberException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateMobileNumber("91 98765432198765");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateMobileNumber("91 98765432198765");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(MobileNumberException e)
+		{
+			Assert.assertEquals(MobileNumberExceptionType.MOBILENUMBER_INVALID,e.type);
+
+		}
 	}
 	
+	@Test
+	public void givenMobileNumber_WhenEmpty_ShouldReturnFalse() throws MobileNumberException
+	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateMobileNumber("");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(MobileNumberException e)
+		{
+			Assert.assertEquals(MobileNumberExceptionType.MOBILENUMBER_EMPTY,e.type);
+
+		}
+	}
 	
 	
 	
