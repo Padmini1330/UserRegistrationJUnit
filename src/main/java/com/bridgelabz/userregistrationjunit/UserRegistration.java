@@ -7,6 +7,7 @@ import com.bridgelabz.userregistrationjunit.EmailException.EmailExceptionType;
 import com.bridgelabz.userregistrationjunit.FirstNameException.FirstNameExceptionType;
 import com.bridgelabz.userregistrationjunit.LastNameException.LastNameExceptionType;
 import com.bridgelabz.userregistrationjunit.MobileNumberException.MobileNumberExceptionType;
+import com.bridgelabz.userregistrationjunit.PasswordException.PasswordExceptionType;
 
 public class UserRegistration 
 {
@@ -87,11 +88,23 @@ public class UserRegistration
 		
 	}
 	
-	public boolean validatePassword(String password) 
+	public boolean validatePassword(String password) throws PasswordException
 	{
+		try
+		{
+			if(password.length()==0)
+				throw new  PasswordException(PasswordExceptionType.PASSWORD_EMPTY, "Enter proper Password, Empty message not allowed");
+			String passwordRegex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@!#$%&?\"]).{8,}$";
+			if(password.matches(passwordRegex))
+				return true;
+			else
+				throw new PasswordException(PasswordExceptionType.PASSWORD_INVALID, "Enter proper Password");
+		}
+		catch(NullPointerException e)
+		{
+			throw new PasswordException(PasswordExceptionType.PASSWORD_NULL, "Enter proper Password, Null not allowed");
+		}
 
-		String passwordRegex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@!#$%&?\"]).{8,}$"; 
-		return password.matches(passwordRegex);
 	}
 }
 
