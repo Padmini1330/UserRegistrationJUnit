@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.bridgelabz.userregistrationjunit.EmailException.EmailExceptionType;
 import com.bridgelabz.userregistrationjunit.FirstNameException.FirstNameExceptionType;
 import com.bridgelabz.userregistrationjunit.LastNameException.LastNameExceptionType;
 import com.bridgelabz.userregistrationjunit.MobileNumberException.MobileNumberExceptionType;
@@ -257,27 +258,39 @@ public class UserRegistrationTest
 	
 	
 	@Test
-	public void givenEmailAddress_WhenProper_ShouldReturnTrue() 
+	public void givenEmailAddress_WhenProper_ShouldReturnTrue() throws EmailException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isValid = userRegistration.validateEmail("abc.xyz@gmail.com");
-		Assert.assertTrue(isValid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateEmail("abc.xyz@gmail.com");
+			Assert.assertTrue(isValid);
+		}
+		catch(EmailException e)
+		{
+			e.printStackTrace();
+		}
 		
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse() 
+	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse() throws EmailException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateEmail("abc@.gmail.");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateEmail("abc@.gmail.");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(EmailException e)
+		{
+			Assert.assertEquals(EmailExceptionType.EMAIL_INVALID,e.type);
+		}
 		
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenNull_ShouldReturnFalse() 
+	public void givenEmailAddress_WhenNull_ShouldReturnFalse() throws EmailException
 	{
 		try 
 		{
@@ -285,39 +298,72 @@ public class UserRegistrationTest
 			boolean isValid = userRegistration.validateEmail(null);
 			Assert.assertFalse(isValid);
 		}
-		catch(NullPointerException e) 
+		catch(EmailException e)
 		{
-			System.out.println("Enter proper Email");
+			Assert.assertEquals(EmailExceptionType.EMAIL_NULL,e.type);
 		}
 		
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenStartsWithSpecialCharacter_ShouldReturnFalse() 
+	public void givenEmailAddress_WhenStartsWithSpecialCharacter_ShouldReturnFalse() throws EmailException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateEmail("$abc@.gmail.");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateEmail("$abc@.gmail.");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(EmailException e)
+		{
+			Assert.assertEquals(EmailExceptionType.EMAIL_INVALID,e.type);
+		}
 		
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenDoesNotContainAtTheRateCharacter_ShouldReturnFalse() 
+	public void givenEmailAddress_WhenDoesNotContainAtTheRateCharacter_ShouldReturnFalse() throws EmailException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateEmail("abc.gmail.");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateEmail("abc.gmail.");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(EmailException e)
+		{
+			Assert.assertEquals(EmailExceptionType.EMAIL_INVALID,e.type);
+		}
 	}	
 	
 	@Test
-	public void givenEmailAddress_WhenEndsWithSpecialCharacter_ShouldReturnFalse() 
+	public void givenEmailAddress_WhenEndsWithSpecialCharacter_ShouldReturnFalse() throws EmailException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateEmail("abc.gmail.com$");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateEmail("abc.gmail.com$");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(EmailException e)
+		{
+			Assert.assertEquals(EmailExceptionType.EMAIL_INVALID,e.type);
+		}
+	}
+	
+	@Test
+	public void givenEmailAddress_WhenEmpty_ShouldReturnFalse() throws EmailException
+	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateEmail("");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(EmailException e)
+		{
+			Assert.assertEquals(EmailExceptionType.EMAIL_EMPTY,e.type);
+		}
 	}
 	
 	
