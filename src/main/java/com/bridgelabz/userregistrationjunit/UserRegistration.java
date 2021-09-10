@@ -3,6 +3,7 @@ package com.bridgelabz.userregistrationjunit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.bridgelabz.userregistrationjunit.EmailException.EmailExceptionType;
 import com.bridgelabz.userregistrationjunit.FirstNameException.FirstNameExceptionType;
 import com.bridgelabz.userregistrationjunit.LastNameException.LastNameExceptionType;
 import com.bridgelabz.userregistrationjunit.MobileNumberException.MobileNumberExceptionType;
@@ -46,12 +47,26 @@ public class UserRegistration
 		}
 	}
 	
-	public boolean validateEmail(String email) 
+	public boolean validateEmail(String email) throws EmailException
 	{
-
-		String emailRegex = "^[a-zA-Z]+[a-zA-Z0-9]*[_+-.]?[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]+[.]?[a-z]+$";
-		return email.matches(emailRegex);
+		try
+		{
+			if(email.length()==0)
+				throw new  EmailException(EmailExceptionType.EMAIL_EMPTY, "Enter proper email, Empty message not allowed");
+			String emailRegex = "^[a-zA-Z]+[a-zA-Z0-9]*[_+-.]?[a-zA-Z0-9]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-z]+[.]?[a-z]+$";
+			if(email.matches(emailRegex))
+				return true;
+			else
+				throw new EmailException(EmailExceptionType.EMAIL_INVALID, "Enter proper email");
+		}
+		catch(NullPointerException e)
+		{
+			throw new EmailException(EmailExceptionType.EMAIL_NULL, "Enter proper email, Null not allowed");
+		}
+		
 	}
+	
+	
 	
 	public boolean validateMobileNumber(String mobileNumber) throws MobileNumberException
 	{
