@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import com.bridgelabz.userregistrationjunit.FirstNameException.FirstNameExceptionType;
 import com.bridgelabz.userregistrationjunit.LastNameException.LastNameExceptionType;
+import com.bridgelabz.userregistrationjunit.MobileNumberException.MobileNumberExceptionType;
 
 public class UserRegistration 
 {
@@ -52,11 +53,23 @@ public class UserRegistration
 		return email.matches(emailRegex);
 	}
 	
-	public boolean validateMobileNumber(String mobileNumber) 
+	public boolean validateMobileNumber(String mobileNumber) throws MobileNumberException
 	{
-
-		String mobileNumberRegex = "^[0-9]{2}\\s{1}[0-9]{10}$"; 
-		return mobileNumber.matches(mobileNumberRegex);
+		try
+		{
+			if(mobileNumber.length()==0)
+				throw new  MobileNumberException(MobileNumberExceptionType.MOBILENUMBER_EMPTY, "Enter proper Mobile number, Empty message not allowed");
+			String mobileNumberRegex = "^[0-9]{2}\\s{1}[0-9]{10}$"; 
+			if(mobileNumber.matches(mobileNumberRegex))
+				return true;
+			else
+				throw new MobileNumberException(MobileNumberExceptionType.MOBILENUMBER_INVALID, "Enter proper Mobile number");
+		}
+		catch(NullPointerException e)
+		{
+			throw new MobileNumberException(MobileNumberExceptionType.MOBILENUMBER_NULL, "Enter proper Mobile number, Null not allowed");
+		}
+		
 	}
 	
 	public boolean validatePassword(String password) 
