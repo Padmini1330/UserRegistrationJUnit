@@ -8,6 +8,7 @@ import com.bridgelabz.userregistrationjunit.EmailException.EmailExceptionType;
 import com.bridgelabz.userregistrationjunit.FirstNameException.FirstNameExceptionType;
 import com.bridgelabz.userregistrationjunit.LastNameException.LastNameExceptionType;
 import com.bridgelabz.userregistrationjunit.MobileNumberException.MobileNumberExceptionType;
+import com.bridgelabz.userregistrationjunit.PasswordException.PasswordExceptionType;
 
 public class UserRegistrationTest 
 {
@@ -489,43 +490,72 @@ public class UserRegistrationTest
 	
 	
 	@Test
-	public void givenPassword_WhenProper_ShouldReturnTrue() 
+	public void givenPassword_WhenProper_ShouldReturnTrue() throws PasswordException
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isValid = userRegistration.validatePassword("padminI$111");
-		Assert.assertTrue(isValid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validatePassword("padminI$111");
+			Assert.assertTrue(isValid);
+		}
+		catch(PasswordException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
-	public void givenPassword_WhenLessThanEightCharcters_ShouldReturnFalse() 
+	public void givenPassword_WhenLessThanEightCharcters_ShouldReturnFalse() throws PasswordException 
 	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validatePassword("abcde@1");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(PasswordException e)
+		{
+			Assert.assertEquals(PasswordExceptionType.PASSWORD_INVALID,e.type);
+
+		}
 		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validatePassword("abcde@1");
-		Assert.assertFalse(isInvalid);
+		
 	}
 	
 	@Test
-	public void givenPassword_WhenNoUpperCaseCharacter_ShouldReturnFalse() 
+	public void givenPassword_WhenNoUpperCaseCharacter_ShouldReturnFalse() throws PasswordException 
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validatePassword("abcdefghij");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validatePassword("abcd5thg");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(PasswordException e)
+		{
+			Assert.assertEquals(PasswordExceptionType.PASSWORD_INVALID,e.type);
+
+		}
 	}
 	
 	@Test
-	public void givenPassword_WhenNoNumericalNumber_ShouldReturnFalse() 
+	public void givenPassword_WhenNoNumericalNumber_ShouldReturnFalse() throws PasswordException 
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validatePassword("passWord@w");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validatePassword("passWord@w");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(PasswordException e)
+		{
+			Assert.assertEquals(PasswordExceptionType.PASSWORD_INVALID,e.type);
+
+		}
 	}
 	
 	@Test
-	public void givenPassword_WhenNull_ShouldReturnFalse() 
+	public void givenPassword_WhenNull_ShouldReturnFalse() throws PasswordException 
 	{
 		
 		try 
@@ -534,27 +564,57 @@ public class UserRegistrationTest
 			boolean isValid = userRegistration.validatePassword(null);
 			Assert.assertFalse(isValid);
 		}
-		catch(NullPointerException e) 
+		catch(PasswordException e)
 		{
-			System.out.println("Enter proper Password");
+			Assert.assertEquals(PasswordExceptionType.PASSWORD_NULL,e.type);
+
 		}
 	}
 	
 	@Test
-	public void givenPassword_WhenContainsNoSpecialCharacter_ShouldReturnFalse() 
+	public void givenPassword_WhenContainsNoSpecialCharacter_ShouldReturnFalse() throws PasswordException 
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validatePassword("abcd5thg");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validatePassword("abcd5thg");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(PasswordException e)
+		{
+			Assert.assertEquals(PasswordExceptionType.PASSWORD_INVALID,e.type);
+
+		}
 	}
 	@Test
-	public void givenPassword_WhenMoreThanOneSpecialCharacter_ShouldReturnFalse() 
+	public void givenPassword_WhenMoreThanOneSpecialCharacter_ShouldReturnFalse() throws PasswordException 
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validatePassword("abcd#$%5thg");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validatePassword("abcd#$%5thg");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(PasswordException e)
+		{
+			Assert.assertEquals(PasswordExceptionType.PASSWORD_INVALID,e.type);
+
+		}
+	}
+	@Test
+	public void givenPassword_WhenEmpty_ShouldReturnFalse() throws PasswordException 
+	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validatePassword("");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(PasswordException e)
+		{
+			Assert.assertEquals(PasswordExceptionType.PASSWORD_EMPTY,e.type);
+
+		}
 	}
 
 }
