@@ -4,41 +4,61 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.bridgelabz.userregistrationjunit.FirstNameException.FirstNameExceptionType;
+
 public class UserRegistrationTest 
 {
 
 	@Test
-	public void givenFirstName_WhenProper_ShouldReturnTrue() 
+	public void givenFirstName_WhenProper_ShouldReturnTrue() throws FirstNameException  
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isValid = userRegistration.validateFirstName("Padmini");
-		Assert.assertTrue(isValid);
+		try 
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateFirstName("Padmini");
+			Assert.assertTrue(isValid);
+		}
+		catch(FirstNameException e)
+		{
+			e.printStackTrace();
+		}
 		
 	}
 	
 	@Test
-	public void givenFirstName_WhenFirstLetterIsSmall_ShouldReturnFalse() 
+	public void givenFirstName_WhenFirstLetterIsSmall_ShouldReturnFalse() throws FirstNameException 
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateFirstName("padmini");
-		Assert.assertFalse(isInvalid);
+		try 
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateFirstName("padmini");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(FirstNameException e)
+		{
+			Assert.assertEquals(FirstNameExceptionType.FIRSTNAME_INVALID,e.type);
+		}
 		
 	}
 	
 	@Test
-	public void givenFirstName_WhenLesserThanThreeCharacters_ShouldReturnFalse() 
+	public void givenFirstName_WhenLesserThanThreeCharacters_ShouldReturnFalse() throws FirstNameException 
 	{
-		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isInvalid = userRegistration.validateFirstName("Pa");
-		Assert.assertFalse(isInvalid);
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isInvalid = userRegistration.validateFirstName("Pa");
+			Assert.assertFalse(isInvalid);
+		}
+		catch(FirstNameException e)
+		{
+			Assert.assertEquals(FirstNameExceptionType.FIRSTNAME_INVALID,e.type);
+		}
 		
 	}
 	
 	@Test
-	public void givenFirstName_WhenNull_ShouldReturnFalse() 
+	public void givenFirstName_WhenNull_ShouldReturnFalse() throws FirstNameException 
 	{
 		try 
 		{
@@ -46,30 +66,62 @@ public class UserRegistrationTest
 			boolean isValid = userRegistration.validateFirstName(null);
 			Assert.assertFalse(isValid);
 		}
-		catch(NullPointerException e) 
+		catch(FirstNameException e) 
 		{
-			System.out.println("Enter proper FirstName");
+			Assert.assertEquals(FirstNameExceptionType.FIRSTNAME_NULL,e.type);
 		}
 		
 	}
 	
 	@Test
-	public void givenFirstName_WhenStartsWithSpecialCharacter_ShouldReturnFalse() 
+	public void givenFirstName_WhenStartsWithSpecialCharacter_ShouldReturnFalse() throws FirstNameException 
 	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateFirstName("%Padmini");
+			Assert.assertFalse(isValid);
+		}
+		catch(FirstNameException e)
+		{
+			Assert.assertEquals(FirstNameExceptionType.FIRSTNAME_INVALID,e.type);
+
+		}
 		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isValid = userRegistration.validateFirstName("%Padmini");
-		Assert.assertFalse(isValid);
 		
 	}
 	
 	@Test
-	public void givenFirstName_WhenContainsBlankspace_ShouldReturnFalse() 
+	public void givenFirstName_WhenContainsBlankspace_ShouldReturnFalse() throws FirstNameException 
 	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateFirstName("Padmin i");
+			Assert.assertFalse(isValid);
+		}
+		catch(FirstNameException e)
+		{
+			Assert.assertEquals(FirstNameExceptionType.FIRSTNAME_INVALID,e.type);
+
+		}
 		
-		UserRegistration userRegistration = new UserRegistration();
-		boolean isValid = userRegistration.validateFirstName("Padmin i");
-		Assert.assertFalse(isValid);
+	}
+	
+	@Test
+	public void givenFirstName_WhenEmpty_ShouldReturnFalse() throws FirstNameException 
+	{
+		try
+		{
+			UserRegistration userRegistration = new UserRegistration();
+			boolean isValid = userRegistration.validateFirstName("");
+			Assert.assertFalse(isValid);
+		}
+		catch(FirstNameException e)
+		{
+			Assert.assertEquals(FirstNameExceptionType.FIRSTNAME_EMPTY,e.type);
+
+		}
 		
 	}
 	
