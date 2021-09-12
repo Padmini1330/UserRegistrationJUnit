@@ -11,7 +11,7 @@ import com.bridgelabz.userregistrationjunit.PasswordException.PasswordExceptionT
 
 public class UserRegistration 
 {
-	public boolean validateFirstName(String firstname) throws FirstNameException
+	public boolean validateFirstName(String firstname) 
 	{
 		try
 		{
@@ -30,7 +30,7 @@ public class UserRegistration
 	}
 	
 	
-	public boolean validateLastName(String lastname) throws LastNameException
+	public boolean validateLastName(String lastname)
 	{
 		try
 		{
@@ -48,7 +48,7 @@ public class UserRegistration
 		}
 	}
 	
-	public boolean validateEmail(String email) throws EmailException
+	public boolean validateEmail(String email) 
 	{
 		try
 		{
@@ -69,7 +69,7 @@ public class UserRegistration
 	
 	
 	
-	public boolean validateMobileNumber(String mobileNumber) throws MobileNumberException
+	public boolean validateMobileNumber(String mobileNumber) 
 	{
 		try
 		{
@@ -88,7 +88,7 @@ public class UserRegistration
 		
 	}
 	
-	public boolean validatePassword(String password) throws PasswordException
+	public boolean validatePassword(String password)
 	{
 		try
 		{
