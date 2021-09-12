@@ -1,6 +1,6 @@
 package com.bridgelabz.userregistrationjunit;
 
-public class PasswordException extends Exception
+public class PasswordException extends RuntimeException
 {
 	enum PasswordExceptionType 
 	{
