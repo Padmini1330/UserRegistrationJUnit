@@ -1,7 +1,7 @@
 package com.bridgelabz.userregistrationjunit;
 
 
-public class MobileNumberException extends Exception
+public class MobileNumberException extends RuntimeException
 {
 	enum MobileNumberExceptionType 
 	{
