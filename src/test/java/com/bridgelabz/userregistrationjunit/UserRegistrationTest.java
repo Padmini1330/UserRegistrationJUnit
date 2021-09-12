@@ -15,7 +15,7 @@ public class UserRegistrationTest
 
 	
 	@Test
-	public void givenFirstName_WhenProper_ShouldReturnTrue() throws FirstNameException  
+	public void givenFirstName_WhenProper_ShouldReturnTrue()    
 	{
 		try 
 		{
@@ -31,7 +31,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenFirstName_WhenFirstLetterIsSmall_ShouldReturnFalse() throws FirstNameException 
+	public void givenFirstName_WhenFirstLetterIsSmall_ShouldReturnFalse()   
 	{
 		try 
 		{
@@ -47,7 +47,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenFirstName_WhenLesserThanThreeCharacters_ShouldReturnFalse() throws FirstNameException 
+	public void givenFirstName_WhenLesserThanThreeCharacters_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -63,7 +63,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenFirstName_WhenNull_ShouldReturnFalse() throws FirstNameException 
+	public void givenFirstName_WhenNull_ShouldReturnFalse()   
 	{
 		try 
 		{
@@ -79,7 +79,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenFirstName_WhenStartsWithSpecialCharacter_ShouldReturnFalse() throws FirstNameException 
+	public void givenFirstName_WhenStartsWithSpecialCharacter_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -97,7 +97,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenFirstName_WhenContainsBlankspace_ShouldReturnFalse() throws FirstNameException 
+	public void givenFirstName_WhenContainsBlankspace_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -114,7 +114,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenFirstName_WhenEmpty_ShouldReturnFalse() throws FirstNameException 
+	public void givenFirstName_WhenEmpty_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -136,7 +136,7 @@ public class UserRegistrationTest
 	
 	
 	@Test
-	public void givenLastName_WhenProper_ShouldReturnTrue() throws LastNameException
+	public void givenLastName_WhenProper_ShouldReturnTrue()    
 	{
 		try
 		{
@@ -153,7 +153,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenLastName_WhenFirstLetterIsSmall_ShouldReturnFalse() throws LastNameException
+	public void givenLastName_WhenFirstLetterIsSmall_ShouldReturnFalse()    
 	{
 		try
 		{
@@ -170,7 +170,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenLastName_WhenLesserThanThreeCharacters_ShouldReturnFalse() throws LastNameException
+	public void givenLastName_WhenLesserThanThreeCharacters_ShouldReturnFalse()    
 	{
 		try
 		{
@@ -187,7 +187,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenLastName_WhenNull_ShouldReturnFalse() throws LastNameException
+	public void givenLastName_WhenNull_ShouldReturnFalse()    
 	{
 		
 		try 
@@ -204,7 +204,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenLastName_WhenStartsWithSpecialCharacter_ShouldReturnFalse() throws LastNameException
+	public void givenLastName_WhenStartsWithSpecialCharacter_ShouldReturnFalse()    
 	{
 		try
 		{
@@ -221,7 +221,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenLastName_WhenContainsBlankspace_ShouldReturnFalse() throws LastNameException
+	public void givenLastName_WhenContainsBlankspace_ShouldReturnFalse()    
 	{
 		try
 		{
@@ -238,7 +238,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenLastName_WhenEmpty_ShouldReturnFalse() throws LastNameException
+	public void givenLastName_WhenEmpty_ShouldReturnFalse()    
 	{
 		try 
 		{
@@ -259,7 +259,7 @@ public class UserRegistrationTest
 	
 	
 	@Test
-	public void givenEmailAddress_WhenProper_ShouldReturnTrue() throws EmailException
+	public void givenEmailAddress_WhenProper_ShouldReturnTrue()   
 	{
 		try
 		{
@@ -275,7 +275,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse() throws EmailException
+	public void givenEmailAddress_WhenNotProper_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -291,7 +291,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenNull_ShouldReturnFalse() throws EmailException
+	public void givenEmailAddress_WhenNull_ShouldReturnFalse()   
 	{
 		try 
 		{
@@ -307,7 +307,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenStartsWithSpecialCharacter_ShouldReturnFalse() throws EmailException
+	public void givenEmailAddress_WhenStartsWithSpecialCharacter_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -323,7 +323,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenDoesNotContainAtTheRateCharacter_ShouldReturnFalse() throws EmailException
+	public void givenEmailAddress_WhenDoesNotContainAtTheRateCharacter_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -338,7 +338,7 @@ public class UserRegistrationTest
 	}	
 	
 	@Test
-	public void givenEmailAddress_WhenEndsWithSpecialCharacter_ShouldReturnFalse() throws EmailException
+	public void givenEmailAddress_WhenEndsWithSpecialCharacter_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -353,7 +353,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenEmailAddress_WhenEmpty_ShouldReturnFalse() throws EmailException
+	public void givenEmailAddress_WhenEmpty_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -373,7 +373,7 @@ public class UserRegistrationTest
 	
 	
 	@Test
-	public void givenMobileNumber_WhenProper_ShouldReturnTrue() throws MobileNumberException
+	public void givenMobileNumber_WhenProper_ShouldReturnTrue()  
 	{
 		try
 		{
@@ -390,7 +390,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNoSpace_ShouldReturnFalse() throws MobileNumberException
+	public void givenMobileNumber_WhenNoSpace_ShouldReturnFalse()  
 	{
 		try
 		{
@@ -406,7 +406,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNull_ShouldReturnFalse() throws MobileNumberException
+	public void givenMobileNumber_WhenNull_ShouldReturnFalse()  
 	{
 		
 		try 
@@ -422,7 +422,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenNumberLessThanTenDigits_ShouldReturnFalse() throws MobileNumberException
+	public void givenMobileNumber_WhenNumberLessThanTenDigits_ShouldReturnFalse()  
 	{
 		try
 		{
@@ -438,7 +438,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenContainsAlphabets_ShouldReturnFalse() throws MobileNumberException
+	public void givenMobileNumber_WhenContainsAlphabets_ShouldReturnFalse()  
 	{
 		try
 		{
@@ -454,7 +454,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenContainsMoreThanTenDigits_ShouldReturnFalse() throws MobileNumberException
+	public void givenMobileNumber_WhenContainsMoreThanTenDigits_ShouldReturnFalse()  
 	{
 		try
 		{
@@ -470,7 +470,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenMobileNumber_WhenEmpty_ShouldReturnFalse() throws MobileNumberException
+	public void givenMobileNumber_WhenEmpty_ShouldReturnFalse()  
 	{
 		try
 		{
@@ -490,7 +490,7 @@ public class UserRegistrationTest
 	
 	
 	@Test
-	public void givenPassword_WhenProper_ShouldReturnTrue() throws PasswordException
+	public void givenPassword_WhenProper_ShouldReturnTrue()    
 	{
 		try
 		{
@@ -505,7 +505,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenPassword_WhenLessThanEightCharcters_ShouldReturnFalse() throws PasswordException 
+	public void givenPassword_WhenLessThanEightCharcters_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -523,7 +523,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenPassword_WhenNoUpperCaseCharacter_ShouldReturnFalse() throws PasswordException 
+	public void givenPassword_WhenNoUpperCaseCharacter_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -539,7 +539,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenPassword_WhenNoNumericalNumber_ShouldReturnFalse() throws PasswordException 
+	public void givenPassword_WhenNoNumericalNumber_ShouldReturnFalse()   
 	{
 		try
 		{
@@ -555,7 +555,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenPassword_WhenNull_ShouldReturnFalse() throws PasswordException 
+	public void givenPassword_WhenNull_ShouldReturnFalse() 
 	{
 		
 		try 
@@ -572,7 +572,7 @@ public class UserRegistrationTest
 	}
 	
 	@Test
-	public void givenPassword_WhenContainsNoSpecialCharacter_ShouldReturnFalse() throws PasswordException 
+	public void givenPassword_WhenContainsNoSpecialCharacter_ShouldReturnFalse()
 	{
 		try
 		{
@@ -587,7 +587,7 @@ public class UserRegistrationTest
 		}
 	}
 	@Test
-	public void givenPassword_WhenMoreThanOneSpecialCharacter_ShouldReturnFalse() throws PasswordException 
+	public void givenPassword_WhenMoreThanOneSpecialCharacter_ShouldReturnFalse()
 	{
 		try
 		{
@@ -602,7 +602,7 @@ public class UserRegistrationTest
 		}
 	}
 	@Test
-	public void givenPassword_WhenEmpty_ShouldReturnFalse() throws PasswordException 
+	public void givenPassword_WhenEmpty_ShouldReturnFalse() 
 	{
 		try
 		{
