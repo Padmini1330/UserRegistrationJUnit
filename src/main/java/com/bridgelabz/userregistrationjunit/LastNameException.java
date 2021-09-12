@@ -1,6 +1,6 @@
 package com.bridgelabz.userregistrationjunit;
 
-public class LastNameException extends Exception
+public class LastNameException extends RuntimeException
 {
 	enum LastNameExceptionType 
 	{
