@@ -141,7 +141,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateLastName("Sharma");
+			boolean isValid = userRegistration.validateLastName.apply("Sharma");
 			Assert.assertTrue(isValid);
 		}
 		
@@ -158,7 +158,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateLastName("sharma");
+			boolean isInvalid = userRegistration.validateLastName.apply("sharma");
 			Assert.assertFalse(isInvalid);
 		}
 		
@@ -175,7 +175,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateLastName("Sh");
+			boolean isInvalid = userRegistration.validateLastName.apply("Sh");
 			Assert.assertFalse(isInvalid);
 		}
 		
@@ -193,7 +193,7 @@ public class UserRegistrationTest
 		try 
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateLastName(null);
+			boolean isValid = userRegistration.validateLastName.apply(null);
 			Assert.assertFalse(isValid);
 		}
 		catch(LastNameException e)
@@ -209,7 +209,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateLastName("%Padmini");
+			boolean isValid = userRegistration.validateLastName.apply("%Padmini");
 			Assert.assertFalse(isValid);
 		}
 		
@@ -226,7 +226,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateLastName("Padmin i");
+			boolean isValid = userRegistration.validateLastName.apply("Padmin i");
 			Assert.assertFalse(isValid);
 		}
 		catch(LastNameException e)
@@ -243,7 +243,7 @@ public class UserRegistrationTest
 		try 
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateLastName("");
+			boolean isValid = userRegistration.validateLastName.apply("");
 			Assert.assertFalse(isValid);
 		}
 		catch(LastNameException e)
