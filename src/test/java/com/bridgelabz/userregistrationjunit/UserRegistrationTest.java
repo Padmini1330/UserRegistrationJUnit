@@ -264,7 +264,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateEmail("abc.xyz@gmail.com");
+			boolean isValid = userRegistration.validateEmail.apply("abc.xyz@gmail.com");
 			Assert.assertTrue(isValid);
 		}
 		catch(EmailException e)
@@ -280,7 +280,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateEmail("abc@.gmail.");
+			boolean isInvalid = userRegistration.validateEmail.apply("abc@.gmail.");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(EmailException e)
@@ -296,7 +296,7 @@ public class UserRegistrationTest
 		try 
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateEmail(null);
+			boolean isValid = userRegistration.validateEmail.apply(null);
 			Assert.assertFalse(isValid);
 		}
 		catch(EmailException e)
@@ -312,7 +312,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateEmail("$abc@.gmail.");
+			boolean isInvalid = userRegistration.validateEmail.apply("$abc@.gmail.");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(EmailException e)
@@ -328,7 +328,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateEmail("abc.gmail.");
+			boolean isInvalid = userRegistration.validateEmail.apply("abc.gmail.");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(EmailException e)
@@ -343,7 +343,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateEmail("abc.gmail.com$");
+			boolean isInvalid = userRegistration.validateEmail.apply("abc.gmail.com$");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(EmailException e)
@@ -358,7 +358,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateEmail("");
+			boolean isInvalid = userRegistration.validateEmail.apply("");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(EmailException e)
