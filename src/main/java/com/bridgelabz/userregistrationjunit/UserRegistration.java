@@ -12,6 +12,7 @@ import com.bridgelabz.userregistrationjunit.PasswordException.PasswordExceptionT
 
 public class UserRegistration 
 {
+	
 	public Function<String,Boolean> validateFirstName = firstName->{
 		
 		try
@@ -53,8 +54,8 @@ public class UserRegistration
 		
 	
 	
-	public boolean validateEmail(String email) 
-	{
+	public Function<String, Boolean> validateEmail = email->{
+		
 		try
 		{
 			if(email.length()==0)
@@ -69,9 +70,7 @@ public class UserRegistration
 		{
 			throw new EmailException(EmailExceptionType.EMAIL_NULL, "Enter proper email, Null not allowed");
 		}
-		
-	}
-	
+	};
 	
 	
 	public boolean validateMobileNumber(String mobileNumber) 
