@@ -495,7 +495,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validatePassword("padminI$111");
+			boolean isValid = userRegistration.validatePassword.apply("padminI$111");
 			Assert.assertTrue(isValid);
 		}
 		catch(PasswordException e)
@@ -510,7 +510,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validatePassword("abcde@1");
+			boolean isInvalid = userRegistration.validatePassword.apply("abcde@1");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(PasswordException e)
@@ -528,7 +528,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validatePassword("abcd5thg");
+			boolean isInvalid = userRegistration.validatePassword.apply("abcd5thg");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(PasswordException e)
@@ -544,7 +544,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validatePassword("passWord@w");
+			boolean isInvalid = userRegistration.validatePassword.apply("passWord@w");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(PasswordException e)
@@ -561,7 +561,7 @@ public class UserRegistrationTest
 		try 
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validatePassword(null);
+			boolean isValid = userRegistration.validatePassword.apply(null);
 			Assert.assertFalse(isValid);
 		}
 		catch(PasswordException e)
@@ -577,7 +577,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validatePassword("abcd5thg");
+			boolean isInvalid = userRegistration.validatePassword.apply("abcd5thg");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(PasswordException e)
@@ -592,7 +592,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validatePassword("abcd#$%5thg");
+			boolean isInvalid = userRegistration.validatePassword.apply("abcd#$%5thg");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(PasswordException e)
@@ -607,7 +607,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validatePassword("");
+			boolean isInvalid = userRegistration.validatePassword.apply("");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(PasswordException e)
