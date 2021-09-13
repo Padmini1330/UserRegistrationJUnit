@@ -70,11 +70,12 @@ public class UserRegistration
 		{
 			throw new EmailException(EmailExceptionType.EMAIL_NULL, "Enter proper email, Null not allowed");
 		}
+		
 	};
 	
 	
-	public boolean validateMobileNumber(String mobileNumber) 
-	{
+	public Function<String,Boolean> validateMobileNumber =mobileNumber ->{
+		
 		try
 		{
 			if(mobileNumber.length()==0)
@@ -89,8 +90,8 @@ public class UserRegistration
 		{
 			throw new MobileNumberException(MobileNumberExceptionType.MOBILENUMBER_NULL, "Enter proper Mobile number, Null not allowed");
 		}
-		
-	}
+	};
+	
 	
 	public boolean validatePassword(String password)
 	{
