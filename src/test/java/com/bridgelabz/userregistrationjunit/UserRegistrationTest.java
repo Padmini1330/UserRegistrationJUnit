@@ -378,7 +378,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateMobileNumber("91 9485736453");
+			boolean isValid = userRegistration.validateMobileNumber.apply("91 9485736453");
 			Assert.assertTrue(isValid);
 		}
 		
@@ -395,7 +395,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateMobileNumber("918765432198");
+			boolean isInvalid = userRegistration.validateMobileNumber.apply("918765432198");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(MobileNumberException e)
@@ -412,7 +412,7 @@ public class UserRegistrationTest
 		try 
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateMobileNumber(null);
+			boolean isValid = userRegistration.validateMobileNumber.apply(null);
 			Assert.assertFalse(isValid);
 		}
 		catch(MobileNumberException e) 
@@ -427,7 +427,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateMobileNumber("85 76");
+			boolean isInvalid = userRegistration.validateMobileNumber.apply("85 76");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(MobileNumberException e)
@@ -443,7 +443,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateMobileNumber("85 abc76defg");
+			boolean isInvalid = userRegistration.validateMobileNumber.apply("85 abc76defg");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(MobileNumberException e)
@@ -459,7 +459,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateMobileNumber("91 98765432198765");
+			boolean isInvalid = userRegistration.validateMobileNumber.apply("91 98765432198765");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(MobileNumberException e)
@@ -475,7 +475,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateMobileNumber("");
+			boolean isInvalid = userRegistration.validateMobileNumber.apply("");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(MobileNumberException e)
