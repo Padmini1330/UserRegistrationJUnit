@@ -20,7 +20,7 @@ public class UserRegistrationTest
 		try 
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateFirstName("Padmini");
+			boolean isValid = userRegistration.validateFirstName.apply("Padmini");
 			Assert.assertTrue(isValid);
 		}
 		catch(FirstNameException e)
@@ -36,7 +36,7 @@ public class UserRegistrationTest
 		try 
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateFirstName("padmini");
+			boolean isInvalid = userRegistration.validateFirstName.apply("padmini");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(FirstNameException e)
@@ -52,7 +52,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isInvalid = userRegistration.validateFirstName("Pa");
+			boolean isInvalid = userRegistration.validateFirstName.apply("Pa");
 			Assert.assertFalse(isInvalid);
 		}
 		catch(FirstNameException e)
@@ -68,7 +68,7 @@ public class UserRegistrationTest
 		try 
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateFirstName(null);
+			boolean isValid = userRegistration.validateFirstName.apply(null);
 			Assert.assertFalse(isValid);
 		}
 		catch(FirstNameException e) 
@@ -84,7 +84,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateFirstName("%Padmini");
+			boolean isValid = userRegistration.validateFirstName.apply("%Padmini");
 			Assert.assertFalse(isValid);
 		}
 		catch(FirstNameException e)
@@ -102,7 +102,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateFirstName("Padmin i");
+			boolean isValid = userRegistration.validateFirstName.apply("Padmin i");
 			Assert.assertFalse(isValid);
 		}
 		catch(FirstNameException e)
@@ -119,7 +119,7 @@ public class UserRegistrationTest
 		try
 		{
 			UserRegistration userRegistration = new UserRegistration();
-			boolean isValid = userRegistration.validateFirstName("");
+			boolean isValid = userRegistration.validateFirstName.apply("");
 			Assert.assertFalse(isValid);
 		}
 		catch(FirstNameException e)
