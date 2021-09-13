@@ -93,8 +93,8 @@ public class UserRegistration
 	};
 	
 	
-	public boolean validatePassword(String password)
-	{
+	public Function<String,Boolean> validatePassword = password -> {
+		
 		try
 		{
 			if(password.length()==0)
@@ -109,8 +109,7 @@ public class UserRegistration
 		{
 			throw new PasswordException(PasswordExceptionType.PASSWORD_NULL, "Enter proper Password, Null not allowed");
 		}
-
-	}
+	};
 }
 
 
