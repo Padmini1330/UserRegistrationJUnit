@@ -1,5 +1,6 @@
 package com.bridgelabz.userregistrationjunit;
 
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,14 +12,14 @@ import com.bridgelabz.userregistrationjunit.PasswordException.PasswordExceptionT
 
 public class UserRegistration 
 {
-	public boolean validateFirstName(String firstname) 
-	{
+	public Function<String,Boolean> validateFirstName = firstName->{
+		
 		try
 		{
-			if(firstname.length()==0)
+			if(firstName.length()==0)
 				throw new  FirstNameException(FirstNameExceptionType.FIRSTNAME_EMPTY, "Enter proper First name, Empty message not allowed");
 			String firstNameRegex = "^[A-Z]{1}[a-zA-Z]{2,}$";
-			if(firstname.matches(firstNameRegex))
+			if(firstName.matches(firstNameRegex))
 				return true;
 			else
 				throw new FirstNameException(FirstNameExceptionType.FIRSTNAME_INVALID, "Enter proper First name");
@@ -27,7 +28,8 @@ public class UserRegistration
 		{
 			throw new FirstNameException(FirstNameExceptionType.FIRSTNAME_NULL, "Enter proper First name, Null not allowed");
 		}
-	}
+		
+	};
 	
 	
 	public boolean validateLastName(String lastname)
