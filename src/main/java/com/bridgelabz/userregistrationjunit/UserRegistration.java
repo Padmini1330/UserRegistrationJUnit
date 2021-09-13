@@ -32,14 +32,14 @@ public class UserRegistration
 	};
 	
 	
-	public boolean validateLastName(String lastname)
-	{
+	public Function<String,Boolean> validateLastName = lastName->{
+		
 		try
 		{
-			if(lastname.length()==0)
+			if(lastName.length()==0)
 				throw new  LastNameException(LastNameExceptionType.LASTNAME_EMPTY, "Enter proper Last name, Empty message not allowed");
 			String lastNameRegex = "^[A-Z]{1}[a-zA-Z]{2,}$";
-			if(lastname.matches(lastNameRegex))
+			if(lastName.matches(lastNameRegex))
 				return true;
 			else
 				throw new LastNameException(LastNameExceptionType.LASTNAME_INVALID, "Enter proper Last name");
@@ -48,7 +48,10 @@ public class UserRegistration
 		{
 			throw new LastNameException(LastNameExceptionType.LASTNAME_NULL, "Enter proper Last name, Null not allowed");
 		}
-	}
+	};
+	
+		
+	
 	
 	public boolean validateEmail(String email) 
 	{
